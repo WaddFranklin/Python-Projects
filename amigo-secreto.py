@@ -51,16 +51,26 @@ opcao = ''
 while True:
     opcao = input("Digite 'cons' para consultar o seu amigo ou 'sair' para finalizar o programa: > ").lower()
     if opcao == 'cons':
-        limpa_tela()
-        nome = input('Digite o seu nome: > ').lower()
-        if nome in amigos:
-            dupla = busca_amigos(duplas, nome)
-            print('{:-<15}> {}'.format(dupla[0] + ' ', dupla[1]))
-            time.sleep(2)
+        while True:
             limpa_tela()
-        else:
-            print('Esse nome não consta na lista de participantes!')
-            limpa_tela()
+            nome = input('Digite o seu nome ou \'sair\' para finalizar a consulta: > ').lower()
+            if nome in amigos:
+                dupla = busca_amigos(duplas, nome)
+                print('\n\nO nome do seu amigo secreto será exibido em 5 segundos...\n\n')
+                time.sleep(5)
+                printa_quadro(dupla[1].upper(), 40)
+                # print('\n----- {} -----\n\n'.format(dupla[1].upper()))
+                print('Aguarde o nome do seu amigo desaparecer...\n\n')
+                # print('{:-<15}> {}'.format(dupla[0].upper() + ' ', dupla[1].upper()))
+                time.sleep(7)
+                limpa_tela()
+            elif nome == 'sair':
+                limpa_tela()
+                break
+            else:
+                print('Esse nome não consta na lista de participantes!')
+                time.sleep(2)
+                limpa_tela()
     elif opcao == 'debug':
         limpa_tela()
         print_duplas(duplas)
@@ -69,5 +79,4 @@ while True:
     else:
         limpa_tela()
         print('Entrada inválida!')
-
-print('\n*--- Desenvolvido por Wadd Franklin ---*')
+        time.sleep(2)

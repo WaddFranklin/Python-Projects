@@ -16,9 +16,19 @@ def busca_amigos(duplas, nome):
         if dupla[0] == nome:
             return dupla
 
+
+def printa_quadro(nome, tamanho_quadro):
+    tamanho_nome = len(nome)
+    espaco_branco = (tamanho_quadro - tamanho_nome)
+    metade = espaco_branco // 2
+    # print(tamanho_nome, espaco_branco, metade)
+    print('+' + '-' * tamanho_quadro + '+')
+    print('|' + ' ' * metade + nome.upper() + ' ' * (espaco_branco - metade) + '|')
+    print('+' + '-' * tamanho_quadro + '+')
+
+
 # título
 def titulo():
-    print('+-----------------------+')
-    print('|---- AMIGO SECRETO ----|')
-    print('+-----------------------+')
+    printa_quadro('AMIGO SECRETO', 38)
+    print('*--- Desenvolvido por Wadd Franklin ---*')
     print()
